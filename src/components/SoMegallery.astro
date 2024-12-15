@@ -1,0 +1,28 @@
+<title>Galleri</title>
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+  }
+
+  .gallery img {
+    width: 100%;
+    border: 3em solid #ccc;
+  }
+
+  .gallery .full-row {
+    grid-column: span 4;
+  }
+</style>
+
+<body>
+  <div class="gallery">
+    <img src="image1.jpg" alt="Billede 1" class="full-row" />
+    <img src="image2.jpg" alt="Billede 2" />
+    <img src="image3.jpg" alt="Billede 3" />
+    <img src="image4.jpg" alt="Billede 4" />
+    <img src="image5.jpg" alt="Billede 5" class="full-row" />
+    <img src="image6.jpg" alt="Billede 6" />
+  </div>
+</body>
