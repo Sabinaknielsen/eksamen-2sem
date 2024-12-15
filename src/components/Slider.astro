@@ -1,9 +1,14 @@
 <section>
   <button class="prev-quote">
-    <img class="pil" src="./svg/pilop.png" alt="Venstre pil" />
+    <img class="pil" src="./svg/højrepil.svg" alt="Venstre pil" />
   </button>
   <div class="quote" id="current-quote">
-    <img class="billede1" src="./somegallery/gaiamedvask.png" alt="" />
+    <img
+      class="billede1"
+      id="quote-image"
+      src="../img/gallerier/billede7.png"
+      alt="Billede"
+    />
     <div>
       <p class="citat">
         "Fantastisk oplevelse! Jeg føler mig altid velkommen, og Gaia lytter
@@ -14,42 +19,42 @@
     </div>
   </div>
   <button class="next-quote">
-    <img class="pil" src="./svg/pilned.png" alt="Højre pil" />
+    <img class="pil" src="../svg/venstrepil.svg" alt="Højre pil" />
   </button>
 </section>
+
 <style>
   section {
-    position: relative; /* For at placere pilene korrekt i forhold til sektionen */
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center; /* Centrerer indholdet i midten af sektionen */
+    justify-content: center;
   }
 
   .pil {
-    width: 24px;
-    height: 24px;
-    cursor: pointer; /* Gør pilene klikbare */
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
   }
 
   .quote {
     display: flex;
-    flex-direction: row; /* Sørger for billede og tekst er på samme linje */
+    flex-direction: row;
     align-items: center;
-    justify-content: flex-start; /* Justerer indholdet mod venstre */
+    justify-content: flex-start;
     max-width: 700px;
-    gap: 20px; /* Afstand mellem billede og tekst */
+    gap: 20px;
   }
 
   .billede1 {
     max-width: 150px;
-
-    border-radius: 5px; /* Runde hjørner */
+    border-radius: 5px;
     height: auto;
   }
 
   .citat {
     font-style: italic;
-    max-width: 65ch;
+    max-width: 60ch;
   }
 
   .person {
@@ -59,45 +64,47 @@
     width: 100%;
   }
 
-  /* Placering af pilene */
   .prev-quote,
   .next-quote {
     background: transparent;
     border: none;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); /* Centrerer pilene vertikalt */
+    transform: translateY(-50%);
     z-index: 10;
   }
 
   .prev-quote {
-    left: 10px; /* Placer pilen til venstre */
+    left: 10px;
   }
 
   .next-quote {
-    right: 10px; /* Placer pilen til højre */
+    right: 10px;
   }
 </style>
+
 <script>
   const quotes = [
     {
       text: `  "Fantastisk oplevelse! Jeg føler mig altid velkommen, og Gaia lytter
-      virkelig til, hvad jeg ønsker. Resultatet er perfekt hver gang – kan varmt
-      anbefale hende!"`,
+        virkelig til, hvad jeg ønsker. Resultatet er perfekt hver gang – kan varmt
+        anbefale hende!"`,
       person: "Frida Taggatz Ovesen",
+      image: "../img/gallerier/billede7.png", // Billede for første citat
     },
     {
-      text: `
-"Jeg er vild med mit nye look! Gaia formåede virkelig at forstå, hvad jeg ønskede, og resultatet er endnu bedre, end jeg havde håbet på. Stemningen i salonen er så hyggelig, og man føler sig virkelig forkælet. Jeg kommer helt sikkert igen!"`,
-      person: "Jeanette Stockel ",
+      text: `"Jeg er vild med mit nye look! Gaia formåede virkelig at forstå, hvad jeg ønskede, og resultatet er endnu bedre, end jeg havde håbet på."`,
+      person: "Jeanette Stockel",
+      image: "../img/gallerier/billede7.png", // Billede for andet citat
     },
   ];
 
   let currentIndex = 0;
   const currentQuote = document.getElementById("current-quote");
+  const quoteImage = document.getElementById("quote-image");
 
   function updateQuote(index) {
-    const { text, person } = quotes[index];
+    const { text, person, image } = quotes[index];
 
     // Find og opdater elementerne
     const citatElement = currentQuote.querySelector(".citat");
@@ -105,6 +112,7 @@
 
     citatElement.textContent = text;
     personElement.textContent = person;
+    quoteImage.src = image; // Opdaterer billedet
   }
 
   document.querySelector(".prev-quote").addEventListener("click", () => {
@@ -116,4 +124,7 @@
     currentIndex = (currentIndex + 1) % quotes.length;
     updateQuote(currentIndex);
   });
+
+  // Initial opdatering af citat og billede
+  updateQuote(currentIndex);
 </script>
