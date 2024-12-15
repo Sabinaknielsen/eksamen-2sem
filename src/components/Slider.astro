@@ -1,61 +1,83 @@
 <section>
   <button class="prev-quote">
-    <img src="./svg/arrow_left.svg" alt="Venstre pil" />
+    <img class="pil" src="./svg/pilop.png" alt="Venstre pil" />
   </button>
   <div class="quote" id="current-quote">
-    <img class="billede1" src="/somegallery/gaiamedvask.png" alt="" />
-    <p class="citat">
-      "Fantastisk oplevelse! Jeg føler mig altid velkommen, og Gaia lytter
-      virkelig til, hvad jeg ønsker. Resultatet er perfekt hver gang – kan varmt
-      anbefale hende!"
-    </p>
-    <p class="person">Maja Hansen</p>
+    <img class="billede1" src="./somegallery/gaiamedvask.png" alt="" />
+    <div>
+      <p class="citat">
+        "Fantastisk oplevelse! Jeg føler mig altid velkommen, og Gaia lytter
+        virkelig til, hvad jeg ønsker. Resultatet er perfekt hver gang – kan
+        varmt anbefale hende!"
+      </p>
+      <p class="person">Maja Hansen</p>
+    </div>
   </div>
   <button class="next-quote">
-    <img src="./svg/arrow_right.svg" alt="Højre pil" />
+    <img class="pil" src="./svg/pilned.png" alt="Højre pil" />
   </button>
 </section>
-
 <style>
-  svg {
-    display: block;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: auto;
-  }
-
-  p {
-    max-width: 65ch;
-  }
-
-  .quote-container {
+  section {
+    position: relative; /* For at placere pilene korrekt i forhold til sektionen */
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px; /* Tilføjer afstand mellem elementer */
+    justify-content: center; /* Centrerer indholdet i midten af sektionen */
+  }
+
+  .pil {
+    width: 24px;
+    height: 24px;
+    cursor: pointer; /* Gør pilene klikbare */
   }
 
   .quote {
-    text-align: left; /* Justerer teksten til venstre */
-    max-width: 700px;
     display: flex;
+    flex-direction: row; /* Sørger for billede og tekst er på samme linje */
     align-items: center;
-    gap: 20px; /* Afstand mellem billedet og teksten */
+    justify-content: flex-start; /* Justerer indholdet mod venstre */
+    max-width: 700px;
+    gap: 20px; /* Afstand mellem billede og tekst */
   }
 
-  .quote img {
-    border: 3px solid #000; /* Sort kant omkring billedet */
+  .billede1 {
+    max-width: 150px;
+
     border-radius: 5px; /* Runde hjørner */
-    max-width: 150px; /* Billedets bredde */
     height: auto;
   }
 
-  .quote-text {
-    flex: 1; /* Sørger for at teksten fylder resten af pladsen */
+  .citat {
+    font-style: italic;
+    max-width: 65ch;
+  }
+
+  .person {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #783e19;
+    width: 100%;
+  }
+
+  /* Placering af pilene */
+  .prev-quote,
+  .next-quote {
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Centrerer pilene vertikalt */
+    z-index: 10;
+  }
+
+  .prev-quote {
+    left: 10px; /* Placer pilen til venstre */
+  }
+
+  .next-quote {
+    right: 10px; /* Placer pilen til højre */
   }
 </style>
-
 <script>
   const quotes = [
     {
