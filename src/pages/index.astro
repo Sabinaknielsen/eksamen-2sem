@@ -4,37 +4,37 @@ import Button from "../components/Button.astro";
 import Formular from "../components/Formular.astro";
 import SoMeIcons from "../components/SoMeIcons.astro";
 import Card_behandling from "../components/Card_behandling.astro";
+import SoMegallery from "../components/SoMegallery.astro";
+import Slider from "../components/Slider.astro";
 ---
 
 <!--OBS MOBILE FIRST!!! -->
 <MainLayout>
   <main>
-<div class="hero_section" >
-  <!-- OBS KODE HVIS VI ENDER MED LOTTIEFILE <div class="lottie">
+    <div class="hero_section">
+      <!-- OBS KODE HVIS VI ENDER MED LOTTIEFILE <div class="lottie">
   <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
   <dotlottie-player src="https://lottie.host/a3e2418c-0beb-460a-aa87-2f549c3663bf/8F7Bt97hQQ.lottie" background="transparent" speed="1" style="width: 1800px; height: 600px;" loop autoplay>
     </dotlottie-player>
   </div> -->
-   <div class="hero_img">
-    <img src="../hero_dark-kopi.png" alt="hero"> <!--OBS HUSK AT REDIGERE IMG FORMAT -->
-   </div>
-    <div class="title_book">
-      <h1>Hair Creations by Gaia</h1>
-    <a href="#bestil_tid"><Button class="button_orange" buttontext="Bestil tid"/></a>
-  </div>
-</div>
+      <div class="hero_img">
+        <img src="../hero_dark-kopi.png" alt="hero" />
+        <!--OBS HUSK AT REDIGERE IMG FORMAT -->
+      </div>
+      <div class="title_book">
+        <h1>Hair Creations by Gaia</h1>
+        <a href="#bestil_tid"
+          ><Button class="button_orange" buttontext="Bestil tid" /></a
+        >
+      </div>
+    </div>
     <h1>BEHANDLINGER OG PRISER</h1>
     <!--Insert CardSection -->
     <section>
       <div class="kundeanmeldelser">
         <h1>LÆS HVAD KUNDERNE SIGER</h1>
-        <p class="citat">
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-          laudantium quisquam cupiditate itaque odio eum accusantium maiores a
-          eligendi autem iusto id fugiat quae unde iste, aspernatur deserunt
-          commodi hic?"
-        </p>
-        <!--Insert AnmeldelserSlideshow-->
+
+        <Slider />
       </div>
     </section>
     <section>
@@ -82,7 +82,7 @@ import Card_behandling from "../components/Card_behandling.astro";
     </section>
     <section>
       <h1>FØLG MIG HER</h1>
-      <!--Insert SoMe galleri -->
+      <SoMegallery />
       <SoMeIcons />
     </section>
     <section>
@@ -103,12 +103,12 @@ import Card_behandling from "../components/Card_behandling.astro";
 </MainLayout>
 
 <style>
-main {
-  background-image: url("../waves-kopi.png"); /*OBS ændre til vores egen baggrund!!*/
-  width: 100%;
-  margin:0;
-  background-attachment: fixed;
-}
+  main {
+    background-image: url("../waves-kopi.png"); /*OBS ændre til vores egen baggrund!!*/
+    width: 100%;
+    margin: 0;
+    background-attachment: fixed;
+  }
   /* OBS KODE HVIS VI ENDER MED LOTTIEFILE .lottie {
   display: flex;
   position: relative;
@@ -119,15 +119,14 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-   }
-   .hero_img {
+  }
+  .hero_img {
     animation: zoomIn 10s infinite alternate;
     width: 100%;
-
-   }
-    /*Zoom-in animation*/
-    @keyframes zoomIn {
-    0%{
+  }
+  /*Zoom-in animation*/
+  @keyframes zoomIn {
+    0% {
       transform: scale(1);
     }
     100% {
@@ -135,8 +134,8 @@ main {
     }
   }
   .title_book {
-  position: absolute;
-  z-index: 1;
+    position: absolute;
+    z-index: 1;
   }
   .title_book h1 {
     color: var(--primary);
@@ -145,10 +144,11 @@ main {
     padding-bottom: 2rem;
   }
 
-  #lokation, .kundeanmeldelser {
-border: 3px solid var(--secondary);
-border-radius: 30px;
-background-color: var(--primary);
+  #lokation,
+  .kundeanmeldelser {
+    border: 3px solid var(--secondary);
+    border-radius: 30px;
+    background-color: var(--primary);
   }
   .lokation img {
     width: 100%;
@@ -159,8 +159,8 @@ background-color: var(--primary);
   /*Styling desktop */
   @media (min-width: 800px) {
     .title_book h1 {
-    font-size: 64pt;
-  }
+      font-size: 64pt;
+    }
     .lokation {
       display: grid;
       grid-template-columns: 1fr 1fr;
